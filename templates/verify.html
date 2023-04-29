@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+   			-webkit-appearance: none;
+    		margin: 0;
+		}
+	</style>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+	<title>Verify</title>
+</head>
+<body class="main"> 
+	<div class="form1">
+		<div class="loghead">
+			
+		</div>
+		<div class="insideform">
+			<form method="POST">
+	  			<div class="mb-3">
+	    			<label><strong>We have sent you a Verification code to  </strong>{{ v_mail }} ...</label>
+	    			<input id="1st" 
+	    			 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+	    			 name="ver1" type="number" maxlength="1" size="10" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+	    			
+	    			<input id="2st"
+	    			 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+	    			 name="ver2" type="number" maxlength="1" size="10"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+	    			
+	    			<input id="3st"
+	    			 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+   	    			 name="ver3" type="number" maxlength="1" size="10"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+	    			
+	    			<input id="4st"
+	    			 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+			    	 name="ver4" type="number" maxlength="1" size="10"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+	  			</div>
+	  			<div class="mb-3">
+
+	  			</div>
+	  			<button type="submit" class="btn btn-primary">Verify</button>
+	  			<div class="ac-anchors">
+
+	  			</div>
+			</form>
+		</div>
+		<div>
+			<button name="resendcode" id="resend" type="submit" class="btn btn-success">Resend Code</button>
+		</div>
+
+	</div>
+	<style>
+		.main{
+			background-color: #f2f2f2;
+		}
+		.form-control{
+			width: 50px;
+			display: inline-block;
+		}
+		#resend{
+			margin-top: 10px;
+		}
+		.form1{
+			padding: 20px 20px;
+			width: 450px;
+			height: 600px;
+			float: center;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.insideform button{
+			width: 80%;
+		}
+		.ac-anchors a{
+			display: block;
+		}
+		.ac-anchors{
+			margin-top: 10px;
+		}
+		.form1 .loghead h1{
+			margin-bottom: 60px;
+			font-family: Microsoft Yi Baiti;
+			font-size: 70px;
+		}
+		.form1 .insideform{
+			padding: 30px 30px;
+			background-color: white;
+			border-radius: 10px;
+		}
+		.glow{
+			background-color: dodgerblue;
+			width: 100%;
+			height: 35px;
+			text-align: center;
+		}
+		.layer{
+			width: 100%;
+			height: 5px;
+			background-color: #ffee00;
+		}
+		.glow strong{
+			font-family: impact;
+			font-size: 26px;
+			color: black;
+			letter-spacing: 1px;
+		}
+		.dont{
+			transform: translate(-40px, -25px);
+		}
+		.reg{
+			transform: translate(78px, 0px);
+		}
+	</style>	
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+    	//var in_1 = document.getElementById('1st');
+	    //var in_2 = document.getElementById('2st');
+	    //var in_3 = document.getElementById('3st');
+	    //var in_4 = document.getElementById('4st');
+	    
+	    
+	    //if (in_1.value == "") {
+	   // 	in_2.focus();
+	    //}
+	    //if (in_1.value != "") {
+	    //	in_2.focus();
+	    	//in_1.value = "5"
+	    //}	
+	    
+    </script>
+</body>
+</html>

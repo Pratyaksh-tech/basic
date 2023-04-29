@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head lang="en">
+<html>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/0a0e93b2aa.js" crossorigin="anonymous"></script>
+	{% block head %} {% endblock %}
+	
+</head>
+<body>
+<nav class="navbar">
+	<div class="mainbtns">
+		<a class="home" href="{{ url_for('home') }}">Home</a>
+		<a class="cart" href="#">All Posts</a>
+		<a class="about-us" href="#">About Us</a>
+		<a class="contact-us" href="#">Contact Us</a>
+	</div>
+	<div class="rightbtns">
+		<strong class="account_name">{{ account_mail }}</strong>
+		<div class="btn_image">
+			<a href="{{ url_for('home') }}"><img class="in_btn_image" src="{{ url_for('static', filename='images/profile.jpg') }}"></a>
+		</div>
+	</div>
+	
+
+</nav>
+<div id="options">
+	<a href="#">Library</a>
+	<a href="#">History</a>
+	<a href="#">My Account</a> 
+	<a href="#">Account Settings</a>
+	<a href="{{ url_for('logout') }}">Sign out</a>
+</div>
+	<form method="POST">
+		<div class="input-group mb-3">
+ 		 	<button class="btn btn-outline-secondary" type="submit" id="button-addon1"><i class="fas fa-search"></i>Search</button>
+  		 	<input name="search" type="text" class="form-control" placeholder="Search.." aria-label="Example text with button addon" aria-describedby="button-addon1">
+		</div>
+	</form>
+	<hr>
+<style>
+	
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.navbar{
+		height: 60px;
+		width: 100%;
+		background-color: white;
+		overflow: hidden;
+	}
+	.navbar .mainbtns{
+		margin-left: 130px;
+	}
+	.btn_image{
+		width: 60px;
+		height: 60px;
+		display: inline-block;
+		margin-right: 15px;
+		border-radius: 50%;
+		overflow: hidden;
+		
+	}
+	.in_btn_image{
+		width: 52px;
+		height: 52px;
+		display: inline-block;
+		border-radius: 50%;
+	}
+	.account_name{
+		display: inline-block;
+	}
+	.navbar .mainbtns a{
+		text-decoration: none;
+		font-size: 18px;
+		text-align: left;
+		margin-left: 17px;
+		color: black;
+		display: inline-block;
+		margin-right: 10px;
+		transition: 0.3s ease;
+		letter-spacing: 0.7px;
+		padding: 20px 10px;
+	}
+
+	.navbar .mainbtns a:hover{
+		background-color: rgba(32, 32, 32, .2);
+	}
+	.navbar .rightbtns{
+		float: right;
+	}
+
+	#options{
+		width: 250px;
+		height: 275px;
+		overflow: hidden;
+		display: none;
+		background-color: black;
+		float: right;
+		margin-right: 40px;
+		text-align: center;
+		border-radius: 5px;
+		transition: 0.5s ease;
+	}
+	#options a{
+		color: white;
+		padding: 15px 40px;
+		border: 2px transparent;
+		display: block;
+		text-decoration: none;
+		font-size: 17px;
+	}
+	#options a:hover{
+		background-color: rgba(62, 62, 62, .7); 
+	}
+</style>
+<script>
+	
+	var button = document.getElementById("cart");
+	var div = document.getElementById("options");
+
+	button.onclick = function(){
+		if (div.style.display == "none"){
+			//div.style.height = 475;
+			//div.style.width = 330;
+			div.style.display = "block"
+		}
+		else{
+			//div.style.height = 0;
+			//div.style.width = 0;
+			div.style.display = "none"
+		}
+}		
+</script>
+	{% block body %} {% endblock %}
+</body>
+</html>

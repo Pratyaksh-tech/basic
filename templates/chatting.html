@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chatting</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+	<div class="chatbox">
+		<div class="chatdata" id="chatdata">
+
+																				
+		</div>
+		<div class="input-group mb-3" id="sending">
+  			<input type="text" class="form-control" id="once" placeholder="Enter Message..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+  			<div class="input-group-append">
+    			<button class="btn btn-outline-success" id="sendbtn" type="button" onClick="sendMessage()">Send..</button>
+  			</div>
+		</div>
+		<hr style="border: thin solid; transform: translateY(-54px);">
+	</div>
+	<div class="room_info">
+		<label>Room Info.</label>
+		<hr style="width: 200px;">
+		<p>Room Code - {{ roomcode }}</p>
+		<a class="btn btn-danger" href="{{url_for('home') }}">Leave Room..</a>
+	</div>
+	<script type="text/javascript">
+		var socketio = io.connect("http://127.0.0.1:5000");
+		
+		const messages = document.getElementById("chatdata");
+		const createmessage = (name, msg) => {
+			const content = `
+			<div style="background-color:#D1D0CE; max-width: 500px; margin-left: 30px; overflow: hidden; margin-top: 50px; height: auto; padding: 20px 10px; align-items: center; display: flex; border-radius: 10px;">
+				<span style="max-width: 400px; margin-left:30px; background-color: #D1D0CE; white-space: normal;"><strong style="background-color: #D1D0CE;">${name}</strong>: <label style="background-color: #D1D0CE; display: inline-block; white-space: normal;">${msg}</label></span>
+			</div>
+			`;
+			messages.innerHTML += content;
+
+		}
+		const createmessage2 = (name, msg) => {
+			const content = `
+			<div style="background-color:#FAF9F6; max-width: 500px; margin-left: 450px; overflow: hidden; margin-top: 50px; height: auto; padding: 20px 10px; align-items: center; display: flex; border-radius: 10px;">
+				<span style="max-width: 400px; margin-left:30px; background-color: #FAF9F6; white-space: normal;"><strong style="background-color: #FAF9F6;">${name}</strong>: <label style="background-color: #FAF9F6; display: inline-block; white-space: normal;">${msg}</label></span>
+			</div>
+			`;
+			messages.innerHTML += content;
+
+		}
+		socketio.on("message", (data) =>{
+			createmessage(data.name, data.message);
+		})
+		const sendMessage = () => {
+			const message = document.getElementById('once');
+			if (message.value == "") return;
+			socketio.emit("message", {data:message.value});
+			createmessage2("pratyakshparashar16", message.value);
+			message.value = "";
+		}
+
+	</script>
+	<style type="text/css">
+		*{
+			background-color: #f2f2f2;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+		}
+		.room_info{
+			width: 200px;
+			height: 300px;
+			float: right;
+			margin-right: 100px;
+			margin-top: 100px;
+			background-color: gainsboro;
+			text-align: center;
+			border-radius: 10px;
+			box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		}
+		.room_info label{
+			text-align: center;
+			font-size: 35px;
+			background-color: gainsboro;
+			font-family: Franklin Gothic Medium;
+			margin-top: 20px;
+		}
+		.room_info p{
+			width: 200px;
+			margin-top: 40px;
+			font-family: Franklin Gothic Medium;
+			background-color: gainsboro;
+			font-size: 20px;
+		}
+		.room_info a{
+			margin-top: 50px;
+		}
+		.chatbox{
+			width: 990px;
+			height: 850px;
+			background-color: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px;
+			align-items: center;
+			overflow: hidden;
+		}
+		.chatbox #sending{
+  			width: 800px;
+  			margin-left: 100px;
+  			transform: translateY(45px);
+		}
+		.chatbox .chatdata{
+			width: 991px;
+			height: 725px;
+			background-color: white;
+			overflow-y: scroll;
+		}
+		
+	</style>
+</body>
+</html>
