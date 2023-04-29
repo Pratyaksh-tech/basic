@@ -4,14 +4,14 @@ from flask_socketio import join_room, leave_room, send, SocketIO
 import datetime
 from os import path
 import os
-import eventlet
-eventlet.monkey_patch()
+#import eventlet
+#eventlet.monkey_patch()
 
 app = Flask(__name__);
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "Cyberpunk2023";
-socketio = SocketIO(app, async_mode='eventlet');
+socketio = SocketIO(app);
 
 db = SQLAlchemy(app);
 app.app_context().push();
@@ -263,5 +263,5 @@ def message(data):
 print("hello")
 
 if __name__ == "__main__":
-	socketio.run(app, server='eventlet');
+	socketio.run(app);
 
