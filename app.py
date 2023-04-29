@@ -263,5 +263,5 @@ def message(data):
 print("hello")
 
 if __name__ == "__main__":
-	socketio.run(app);
+	socketio.run(app, server='eventlet');
 
