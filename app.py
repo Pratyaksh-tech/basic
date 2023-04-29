@@ -4,14 +4,14 @@ from flask_socketio import join_room, leave_room, send, SocketIO
 import datetime
 from os import path
 import os
-#import eventlet
-#eventlet.monkey_patch()
+import eventlet
+eventlet.monkey_patch()
 
 app = Flask(__name__);
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "etshtssrstjrdtrtsj@dtyjyjrtyj3456rthjrstjrjeyrstyjrsthjr";
-socketio = SocketIO(app, manage_session=False);
+socketio = SocketIO(app, manage_session=False, async_mode='eventlet');
 
 db = SQLAlchemy(app);
 app.app_context().push();
