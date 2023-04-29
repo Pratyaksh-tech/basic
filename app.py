@@ -10,8 +10,8 @@ import os
 app = Flask(__name__);
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = "Cyberpunk2023";
-socketio = SocketIO(app);
+app.secret_key = "etshtssrstjrdtrtsj@dtyjyjrtyj3456rthjrstjrjeyrstyjrsthjr";
+socketio = SocketIO(app, manage_session=False);
 
 db = SQLAlchemy(app);
 app.app_context().push();
