@@ -67,7 +67,6 @@ class Sendmail:
 
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import random
 import string
 
 store_email = None;
@@ -260,9 +259,7 @@ def message(data):
 
 
 
-print("hello")
-
 if __name__ == "__main__":
-	app.run()
+	#app.run()
 	socketio.run(app);
 
