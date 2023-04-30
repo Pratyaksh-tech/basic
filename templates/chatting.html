@@ -29,7 +29,7 @@
 	</div>
 	<script type="text/javascript">
 		var socketio = io();
-		
+		var myDiv = document.getElementById("chatdata");
 		const messages = document.getElementById("chatdata");
 		const createmessage = (name, msg) => {
 			const content = `
@@ -38,7 +38,7 @@
 			</div>
 			`;
 			messages.innerHTML += content;
-
+			myDiv.scrollTop = myDiv.scrollHeight;
 		}
 		const createmessage2 = (name, msg) => {
 			const content = `
@@ -47,7 +47,7 @@
 			</div>
 			`;
 			messages.innerHTML += content;
-
+			myDiv.scrollTop = myDiv.scrollHeight;
 		}
 		socketio.on("message", (data) =>{
 			createmessage(data.name, data.message);
