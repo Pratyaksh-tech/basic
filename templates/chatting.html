@@ -14,7 +14,7 @@
 																				
 		</div>
 		<div class="input-group mb-3" id="sending">
-  			<input type="text" class="form-control" id="once" placeholder="Enter Message..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+  			<input type="text" class="form-control" id="once" placeholder="Enter Message..." aria-label="Recipient's username" aria-describedby="basic-addon2" onkeydown="sendMessageOnEnter(event)">
   			<div class="input-group-append">
     			<button class="btn btn-outline-success" id="sendbtn" type="button" onClick="sendMessage()">Send..</button>
   			</div>
@@ -59,7 +59,11 @@
 			createmessage2("pratyakshparashar16", message.value);
 			message.value = "";
 		}
-
+		const sendMessageOnEnter = (event) => {
+  			if (event.keyCode === 13) {
+    			sendMessage();
+  			}
+		}
 	</script>
 	<style type="text/css">
 		*{
