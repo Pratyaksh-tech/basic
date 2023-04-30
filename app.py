@@ -11,7 +11,7 @@ app = Flask(__name__);
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "etshtssrstjrdtrtsj@dtyjyjrtyj3456rthjrstjrjeyrstyjrsthjr";
-socketio = SocketIO(app, async_mode='gevent', cors_allowed_origins="*");
+socketio = SocketIO(app, manage_session=True, async_mode='gevent', cors_allowed_origins="*");
 
 db = SQLAlchemy(app);
 app.app_context().push();
@@ -264,5 +264,5 @@ def message(data):
 
 if __name__ == "__main__":
 	app.run()
-	socketio.run(app, host='0.0.0.0', port=5000);
+	socketio.run(app);
 
