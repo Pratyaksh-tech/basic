@@ -128,18 +128,18 @@ def login():
 def Verify():
 	global p
 	global sent
-	
+	print("NOW DOING SOME VERIFYING STUFF");
 	if store_email != None:
 		while p < 1:
 			sent = Sendmail(store_email);
 			p+=1;
-
+		print("YOU ACCESED VERIFICATION PAGE")
 		if request.method == 'POST':
 			store_ver_1 = request.form.get('ver1');
 			store_ver_2 = request.form.get('ver2');
 			store_ver_3 = request.form.get('ver3');
 			store_ver_4 = request.form.get('ver4');
-
+			print("VALIDATING EVERYTHING YOU TOLSD ME")
 			full_code = str(store_ver_1) + str(store_ver_2) + str(store_ver_3) + str(store_ver_4);
 			print(full_code + " this is the code $$$$$$$$$$$$$$$$$$$$$$$$$$")
 			if full_code == sent.orignal_code:
