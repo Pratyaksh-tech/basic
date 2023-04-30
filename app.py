@@ -116,6 +116,7 @@ def login():
 				else:
 					flash("Incorrect Password, Try Again", category='danger')
 			else:
+				print(str(user) + " this is the user and you will do with it")
 				flash("Incorrect E-Mail, Try Again", category='danger')			
 	return render_template('login.html');
 
