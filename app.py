@@ -78,12 +78,12 @@ val_e_mail = None;
 @app.route('/', methods=['GET', 'POST'])
 def home():
 	global val_e_mail
-	if 'email' in session:
-		print(val_e_mail, "--------------------------------")
-		username = session.get('email').split('@')[0];
-		return render_template("home.html", infor=username) 
-	else:
-		return redirect(url_for('login'))
+	#if 'email' in session:
+	print(val_e_mail, "--------------------------------")
+	username = session.get('email').split('@')[0];
+	return render_template("home.html", infor=username) 
+	#else:
+	#return redirect(url_for('login'))
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
