@@ -11,7 +11,7 @@ app = Flask(__name__);
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "etshtssrstjrdtrtsj@dtyjyjrtyj3456rthjrstjrjeyrstyjrsthjr";
-socketio = SocketIO(app, manage_session=True, async_mode='gevent', cors_allowed_origins="*", ping_timeout=200, ping_interval=30);
+socketio = SocketIO(app, async_mode='gevent', cors_allowed_origins="*", ping_timeout=200, ping_interval=30);
 
 db = SQLAlchemy(app);
 app.app_context().push();
@@ -78,12 +78,12 @@ val_e_mail = None;
 @app.route('/', methods=['GET', 'POST'])
 def home():
 	global val_e_mail
-	#if 'email' in session:
-	print(val_e_mail, "--------------------------------")
-	username = session.get('email').split('@')[0];
-	return render_template("home.html", infor=username) 
-	#else:
-	#return redirect(url_for('login'))
+	if 'email' in session:
+		print(val_e_mail, "--------------------------------")
+		username = session.get('email').split('@')[0];
+		return render_template("home.html", infor=username) 
+	else:
+		return redirect(url_for('login'))
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
