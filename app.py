@@ -261,6 +261,6 @@ def message(data):
 
 
 if __name__ == "__main__":
-	#app.run()
+	app.run()
 	socketio.run(app);
 
