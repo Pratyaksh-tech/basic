@@ -68,6 +68,7 @@ class Sendmail:
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import string
+import random
 
 store_email = None;
 store_password = None;
@@ -143,6 +144,7 @@ def Verify():
 			print(full_code + " this is the code $$$$$$$$$$$$$$$$$$$$$$$$$$")
 			if full_code == sent.orignal_code:
 				storing_email_and_pass_in_db = UserModel(e_mail=store_email, password=store_password);
+				print(store_email + " this is the email which is used")
 				db.session.add(storing_email_and_pass_in_db);
 				db.session.commit();
 				return redirect(url_for("login"));
