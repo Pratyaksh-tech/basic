@@ -18,3 +18,4 @@ six==1.16.0
 SQLAlchemy==2.0.11
 gunicorn==20.1.0
 gevent==22.10.2
+gevent-websocket==0.10.1
