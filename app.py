@@ -220,7 +220,7 @@ def chattingform():
 def liveChatting():
 	if session.get('room') is None:
 		return redirect(url_for('chattingform'));
-	return render_template('chatting.html', roomcode=session.get('room'));
+	return render_template('chatting.html', roomcode=session.get('room'), cname=session.get('email').split('@')[0]);
 
 @socketio.on("connect")
 def connect(auth):
