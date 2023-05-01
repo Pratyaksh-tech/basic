@@ -49,14 +49,16 @@
 			messages.innerHTML += content;
 			myDiv.scrollTop = myDiv.scrollHeight;
 		}
+		var cname = "";
 		socketio.on("message", (data) =>{
 			createmessage(data.name, data.message);
+			cname = data.name;
 		})
 		const sendMessage = () => {
 			const message = document.getElementById('once');
 			if (message.value == "") return;
 			socketio.emit("message", {data:message.value});
-			createmessage2("pratyakshparashar16", message.value);
+			createmessage2(cname, message.value);
 			message.value = "";
 		}
 		const sendMessageOnEnter = (event) => {
