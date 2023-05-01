@@ -49,10 +49,9 @@
 			messages.innerHTML += content;
 			myDiv.scrollTop = myDiv.scrollHeight;
 		}
-		var cname = "";
+		var cname = {{ cname|tojson|safe }};
 		socketio.on("message", (data) =>{
 			createmessage(data.name, data.message);
-			cname = data.name;
 		})
 		const sendMessage = () => {
 			const message = document.getElementById('once');
