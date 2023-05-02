@@ -147,8 +147,7 @@ def Verify():
 				print(store_email + " this is the email which is used")
 				db.session.add(storing_email_and_pass_in_db);
 				db.session.commit();
-				session['email'] = store_email;
-				return redirect(url_for("home"));
+				return redirect(url_for("login"));
 
 		return render_template('verify.html', v_mail=store_email);
 	elif 'password' in session:
